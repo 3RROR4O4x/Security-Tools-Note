@@ -4,21 +4,21 @@ Tool writeup and expample for Nmap,Wireshark,Metasploit basics and more
 Day 1 Lab — Networking Foundations (practical)
 Overview
 
-In today’s lab you’ll:
+# In today’s lab you’ll:
 
-Identify the active network interface and MAC address on your Kali machine.
+- Identify the active network interface and MAC address on your Kali machine.
 
-Capture live network traffic and inspect ARP and ICMP packets.
+- Capture live network traffic and inspect ARP and ICMP packets.
 
-Capture and analyze a TCP 3-way handshake.
+- Capture and analyze a TCP 3-way handshake.
 
-Do a safe local host discovery (scan).
+- Do a safe local host discovery (scan).
 
-Use Netcat to create a basic socket connection.
+- Use Netcat to create a basic socket connection.
 
-Produce a short timeline of key packets and run a simple parsing script to extract MAC pairs.
+- Produce a short timeline of key packets and run a simple parsing script to extract MAC pairs.
 
-Each activity includes: what to do, why, what you should see, and troubleshooting tips.
+- Each activity includes: what to do, why, what you should see, and troubleshooting tips.
 
 Preparation (quick checks)
 
