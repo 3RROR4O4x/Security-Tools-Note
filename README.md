@@ -68,13 +68,13 @@ ARP replies mapping IP → MAC.
 
 ICMP echo requests and replies between your host and the target.
 
-🔹Troubleshoot:
+✅Troubleshoot:
 
 If you don’t see ARP, your interface may already have ARP cached entries — check the ARP table to confirm.
 
 If no packets at all, verify you captured on the correct interface and that your VM mode allows that traffic.
 
-Lab Step 4 — Inspect a TCP 3-way handshake (what to do)
+🔹Lab Step 4 — Inspect a TCP 3-way handshake (what to do)
 
 Start a capture focused on TCP.
 
@@ -86,13 +86,13 @@ Why: Understanding the handshake explains how TCP establishes reliable connectio
 
 What you should see: Three packets in sequence: a SYN from your host, a SYN/ACK from the server, then an ACK from your host. After the ACK, the application data (HTTP headers) will follow.
 
-Troubleshoot:
+✅Troubleshoot:
 
 If you see SYN but not SYN/ACK, the remote server might be unreachable, or a firewall is blocking responses.
 
 If nothing appears, check DNS resolution — the host may not have resolved the domain you requested.
 
-Lab Step 5 — Basic local network scan (what to do)
+🔹Lab Step 5 — Basic local network scan (what to do)
 
 Determine your local subnet and run a host discovery scan to find live devices.
 
@@ -102,11 +102,11 @@ What you should see: A list of IPs reported as “host up”, optionally with MA
 
 Safety note: Only scan networks you own or have authorization for.
 
-Troubleshoot:
+✅Troubleshoot:
 
 If the scan returns few hosts, ensure your subnet is correct. Some networks isolate clients so scans won’t reveal all devices.
 
-Lab Step 6 — Netcat: basic socket test (what to do)
+🔹Lab Step 6 — Netcat: basic socket test (what to do)
 
 Open a TCP listener on a port. Connect to it from another terminal (same host or different host) and exchange messages.
 
@@ -114,9 +114,9 @@ Why: Netcat demonstrates raw socket communication and lets you observe payloads 
 
 What you should see: Typed messages appearing on both ends; corresponding TCP frames in your capture with payloads.
 
-Troubleshoot: If connection fails, check that the listener is running on the expected interface/port and that local firewall rules aren’t blocking it.
+✅Troubleshoot: If connection fails, check that the listener is running on the expected interface/port and that local firewall rules aren’t blocking it.
 
-Lab Step 7 — Make a short PCAP timeline and parse MAC pairs (what to do)
+🔹Lab Step 7 — Make a short PCAP timeline and parse MAC pairs (what to do)
 
 Use a packet viewer to create a simple timeline: find where DHCP/ARP/DNS/TCP events occur and note packet numbers/times.
 
@@ -126,36 +126,36 @@ Why: A timeline helps you explain what happened during the capture, and parsing 
 
 What you should see: A concise timeline listing things like “Packet 12 — ARP who-has; Packet 13 — ARP reply; Packet 47–49 — TCP handshake; Packet 50 — HTTP GET.”
 
-Troubleshoot: If your script fails to parse the PCAP, ensure the file was captured correctly and the script expects the right file format.
+✅Troubleshoot: If your script fails to parse the PCAP, ensure the file was captured correctly and the script expects the right file format.
 
-Reflection / Teaching Prompts
+🤔Reflection / Teaching Prompts
 
 After completing the lab, ask yourself (or your students) to explain:
 
-Why ARP is necessary on a LAN, and how ARP spoofing can be abused.
+- Why ARP is necessary on a LAN, and how ARP spoofing can be abused.
 
-How MAC and IP addresses differ in role and scope.
+- How MAC and IP addresses differ in role and scope.
 
-What a SYN flood attack would attempt to do to the TCP handshake.
+- What a SYN flood attack would attempt to do to the TCP handshake.
 
-How defenders can monitor ARP or long-lived outbound connections to detect suspicious behavior.
+- How defenders can monitor ARP or long-lived outbound connections to detect suspicious behavior.
 
-Common pitfalls & quick fixes
+⚠️✅Common pitfalls & quick fixes
 
-No traffic captured → Wrong interface, capture permissions, or VM network mode. Re-check interface selection and permissions.
+- No traffic captured → Wrong interface, capture permissions, or VM network mode. Re-check interface selection and permissions.
 
-Wireshark shows nothing → Try capturing with tcpdump and then open the saved file; ensure you have permission (dumpcap config) or run as a user allowed to capture.
+- Wireshark shows nothing → Try capturing with tcpdump and then open the saved file; ensure you have permission (dumpcap config) or run as a user allowed to capture.
 
-Scanning yields no hosts → Ensure scanning network is the same subnet and that host discovery method (ARP vs ICMP) is appropriate for the environment.
+- Scanning yields no hosts → Ensure scanning network is the same subnet and that host discovery method (ARP vs ICMP) is appropriate for the environment.
 
-Script errors → Confirm dependencies (Scapy installed) and that the PCAP path is correct.
+- Script errors → Confirm dependencies (Scapy installed) and that the PCAP path is correct.
 
-What to save as proof / deliverables
+🛠️What to save as proof / deliverables
 
-Capture files for ARP/ICMP and for the TCP handshake.
+- Capture files for ARP/ICMP and for the TCP handshake.
 
-A short timeline note (a paragraph or bullet list) describing the main events and packet numbers.
+- A short timeline note (a paragraph or bullet list) describing the main events and packet numbers.
 
-The parsing script and its output.
+- The parsing script and its output.
 
-Short notes on anything unusual you observed. 
+ 
